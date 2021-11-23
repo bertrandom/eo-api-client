@@ -1,4 +1,4 @@
-# eo-client
+# eo-api-client
 
 Barebones client for the Electric Objects API. Uses access token stored and provided by [eo-auth](https://github.com/bertrandom/eo-auth).
 
