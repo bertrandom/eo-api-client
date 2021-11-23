@@ -1,6 +1,6 @@
 {
   "name": "eo-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Barebones client for the Electric Objects API",
   "main": "client.js",
   "scripts": {
