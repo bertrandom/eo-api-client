@@ -11,5 +11,9 @@
   "dependencies": {
     "eo-auth": "^1.0.1",
     "request-promise-native": "^1.0.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bertrandom/eo-client.git"
   }
 }
