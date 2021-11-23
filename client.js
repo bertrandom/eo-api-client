@@ -1,7 +1,7 @@
 var eoAuth = require('eo-auth');
 const rp = require('request-promise-native');
 
-const call = async (method, url, formData) => {
+const call = async (method, url, formData, body) => {
 
     var accessToken = await eoAuth.getAccessToken();
 
@@ -16,6 +16,10 @@ const call = async (method, url, formData) => {
 
     if (formData) {
         options.formData = formData;
+    }
+
+    if (body) {
+        options.body = body;
     }
 
     return rp(options);
@@ -132,6 +136,20 @@ const deletePlaylist = async (playlistId) => {
     return call('DELETE', `v5/playlists/${playlistId}`);
 }
 
+const displayArtwork = async (deviceId, artworkId) => {
+    return call('PUT', `v5/devices/${deviceId}/displayed/artworks/${artworkId}`);
+}
+
+const displayPlaylist = async (deviceId, playlistId, shuffle) => {
+    var data = null;
+    if (shuffle) {
+        data = {
+            shuffle: true
+        }
+    }
+    return call('PUT', `v5/devices/${deviceId}/displayed/playlists/${playlistId}`, null, data);
+}
+
 module.exports = {
     call,
     getAllEvents,
@@ -157,5 +175,7 @@ module.exports = {
     favoriteArtwork,
     unFavoriteArtwork,
     addArtworkToPlaylist,
-    deletePlaylist
+    deletePlaylist,
+    displayArtwork,
+    displayPlaylist,
 }
